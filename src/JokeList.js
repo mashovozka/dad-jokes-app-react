@@ -17,6 +17,7 @@ class JokeList extends Component{
         this.seenJokes = new Set(this.state.jokes.map(j => j.text));
         console.log(this.seenJokes)
         this.handleClick = this.handleClick.bind(this);
+        this.handleClear = this.handleClear.bind(this);
     }
     async componentDidMount(){
         if(this.state.jokes.length === 0) this.getJokes();
@@ -63,7 +64,10 @@ class JokeList extends Component{
 
     handleClick(){
         this.setState({loading: true}, this.getJokes)
-      
+    }
+
+    handleClear(){
+        this.setState({jokes: []})
     }
     render(){
         if(this.state.loading){
@@ -82,6 +86,7 @@ class JokeList extends Component{
                     <span>Dad</span> Jokes</h1>  
                     <img src='https://assets.dryicons.com/uploads/icon/svg/8927/0eb14c71-38f2-433a-bfc8-23d9c99b3647.svg' />
                     <button className="JokeList-getmore" onClick={this.handleClick} >New Jokes</button>
+                    <button className="JokeList-clear" onClick={this.handleClear} >Clear</button>
                 </div>
                
                 <div className="JokeList-jokes">
