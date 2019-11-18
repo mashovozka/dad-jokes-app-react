@@ -67,7 +67,9 @@ class JokeList extends Component{
     }
 
     handleClear(){
-        this.setState({jokes: []})
+        this.setState({jokes: []});
+        window.localStorage.clear();
+      
     }
     render(){
         if(this.state.loading){
